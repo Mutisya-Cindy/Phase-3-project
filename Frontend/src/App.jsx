@@ -1,18 +1,21 @@
 import React from 'react';
 import NavBar from './components/NavBar';
-import SearchBar from './components/SearchBar';
-import CreateProfile from './components/CreateProfile';
+import CreatePlumberProfile from './components/CreatePlumberProfile';
+import PlumberProfile from './components/PlumberProfile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div>
       <NavBar />
-      <div id="searchBar">
-        <SearchBar />
-      </div>
+      
+        
+      
       <div id="createProfile">
-        <CreateProfile /> 
+        <CreatePlumberProfile /> 
+      </div>
+      <div id="plumberProfile">
+        <PlumberProfile /> 
       </div>
     </div>
   );
