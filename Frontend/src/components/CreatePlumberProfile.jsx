@@ -4,8 +4,8 @@ const CreatePlumberProfile = () => {
   // State to store form data
   const [formData, setFormData] = useState({
     name: '',
-    contact_info: '', // Update key to match backend
-    service_areas: '' // Update key to match backend
+    contact: '', // Updated field name
+    service_areas: ''
   });
 
   // Function to handle form field changes
@@ -19,7 +19,7 @@ const CreatePlumberProfile = () => {
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent form submission from reloading the page
+    e.preventDefault();
     try {
       const response = await fetch('/plumbers/', {
         method: 'POST',
@@ -30,10 +30,10 @@ const CreatePlumberProfile = () => {
       });
       if (response.ok) {
         console.log('Plumber profile created successfully!');
-        // Reset form after successful submission
+        
         setFormData({
           name: '',
-          contact_info: '',
+          contact: '', 
           service_areas: ''
         });
       } else {
@@ -53,12 +53,12 @@ const CreatePlumberProfile = () => {
           <input type="text" className="form-control" id="name" name="name" value={formData.name} onChange={handleInputChange} />
         </div>
         <div className="mb-3">
-          <label htmlFor="contact_info" className="form-label">Contact Info</label> {/* Update htmlFor and name */}
-          <input type="text" className="form-control" id="contact_info" name="contact_info" value={formData.contact_info} onChange={handleInputChange} /> {/* Update id and value */}
+          <label htmlFor="contact" className="form-label">Contact Info</label>
+          <input type="text" className="form-control" id="contact" name="contact" value={formData.contact} onChange={handleInputChange} />
         </div>
         <div className="mb-3">
-          <label htmlFor="service_areas" className="form-label">Service Areas</label> {/* Update htmlFor and name */}
-          <input type="text" className="form-control" id="service_areas" name="service_areas" value={formData.service_areas} onChange={handleInputChange} /> {/* Update id and value */}
+          <label htmlFor="service_areas" className="form-label">Service Areas</label>
+          <input type="text" className="form-control" id="service_areas" name="service_areas" value={formData.service_areas} onChange={handleInputChange} />
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>

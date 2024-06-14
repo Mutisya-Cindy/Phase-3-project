@@ -19,6 +19,14 @@ class Plumber:
         self.id = cursor.lastrowid
         print(f"{self.name} saved")
 
+    def calculate_average_rating(self):
+        sql = f"""
+        SELECT AVG(rating) FROM ratings WHERE plumber_id = ?
+        """
+        cursor.execute(sql, (self.id,))
+        result = cursor.fetchone()
+        return result[0] if result[0] is not None else 0
+
     @classmethod
     def create_table(cls):
         sql_drop = f"DROP TABLE IF EXISTS {cls.TABLE_NAME}"
@@ -42,4 +50,3 @@ plumber_data = [("John", "0789078952", "Nairobi"), ("Peter", "0789654372", "Mach
 for name, contact, service_areas in plumber_data:
     plumber = Plumber(name, contact, service_areas)
     plumber.save()
-
